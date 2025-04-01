@@ -1,0 +1,17 @@
+query GetModelIdFromTypeAndInstance($type: ModelType!, $instance: UnsignedInt!)
+{
+  modelIdFromTypeAndInstance(type: $type, instance: $instance)
+}
+
+query GetModelTypeFromModelId($modelId: ModelIdScalar)
+{
+  modelTypeFromModelId(modelId: $modelId)
+}
+
+## this works
+query GetModelInstanceFromModelId($modelId: ModelIdScalar)
+{ modelInstanceFromModelId(modelId: $modelId) }
+
+## this gives 'error CS0037: Cannot convert null to 'ModelId' because it is a non-nullable value type'
+#query GetModelInstanceFromModelId2($modelId: ModelIdScalar!)
+#{ modelInstanceFromModelId2(modelId: $modelId) }

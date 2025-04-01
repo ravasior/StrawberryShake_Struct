@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="HotChocolate.AspNetCore" />
+		<PackageReference Include="HotChocolate.AspNetCore.CommandLine" />
+		<PackageReference Include="HotChocolate.Diagnostics" />
+		<PackageReference Include="HotChocolate.Types" />
+		<PackageReference Include="HotChocolate.Types.Scalars" />
+	</ItemGroup>
+
+	<PropertyGroup>
+		<IsCIPipeline Condition="'$(CI)' == 'true'">true</IsCIPipeline>
+	</PropertyGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(IsCIPipeline)' != 'true'">
+		<Exec Command="$(TargetDir)$(TargetName).exe schema export --output ../Export/schema.graphql" />
+	</Target>
+
+</Project>

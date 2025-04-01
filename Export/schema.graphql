@@ -1,0 +1,21 @@
+﻿schema {
+  query: Query
+}
+
+type Query {
+  modelIdFromTypeAndInstance(type: ModelType! instance: UnsignedInt!): ModelIdScalar!
+  modelTypeFromModelId(modelId: ModelIdScalar): ModelType
+  modelInstanceFromModelId(modelId: ModelIdScalar): UnsignedInt
+  modelInstanceFromModelId2(modelId: ModelIdScalar!): UnsignedInt
+}
+
+enum ModelType {
+  TYPE0
+  TYPE1
+  TYPE2
+}
+
+scalar ModelIdScalar
+
+"The UnsignedInt scalar type represents a unsigned 32-bit numeric non-fractional value greater than or equal to 0."
+scalar UnsignedInt

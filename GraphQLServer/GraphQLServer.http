@@ -1,0 +1,26 @@
+@WebApplication_HostAddress = http://localhost:5095
+
+GET {{WebApplication_HostAddress}}/graphql/schema.graphql
+Accept: application/graphql
+
+###
+Post {{WebApplication_HostAddress}}/graphql
+Content-Type: application/json
+{
+  "query" : "query { modelInstanceFromModelId(modelId: 333) }"
+}
+
+###
+Post {{WebApplication_HostAddress}}/graphql
+Content-Type: application/json
+{
+  "query" : "query { modelTypeFromModelId(modelId: 8589934614) }"
+}
+
+###
+Post {{WebApplication_HostAddress}}/graphql
+Content-Type: application/json
+{
+  "query" : "query { modelIdFromTypeAndInstance(type: TYPE2, instance: 333) }"
+}
+

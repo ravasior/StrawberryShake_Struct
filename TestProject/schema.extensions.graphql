@@ -1,0 +1,8 @@
+﻿
+extend scalar UnsignedInt
+  @serializationType(name: "global::System.Int64")
+  @runtimeType(name: "global::System.UInt32")
+
+extend scalar ModelIdScalar
+  @serializationType(name: "global::System.UInt64")
+  @runtimeType(name: "global::GraphQLServer.ModelId")
